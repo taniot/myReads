@@ -9,7 +9,7 @@ class SearchComponent extends React.Component {
   static propTypes = {
     books: PropTypes.array.isRequired,
     categories: PropTypes.array.isRequired,
-    onChangeShelf: PropTypes.func.isRequired
+    onChangeShelf: PropTypes.func.isRequired,
   };
 
   state = {

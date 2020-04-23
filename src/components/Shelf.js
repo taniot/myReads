@@ -22,7 +22,7 @@ Shelf.propTypes = {
   books: PropTypes.array.isRequired,
   categories: PropTypes.array.isRequired,
   onChangeShelf: PropTypes.func.isRequired,
-  library: PropTypes.array.isRequired
+  library: PropTypes.array.isRequired,
 };
 
 export default Shelf;

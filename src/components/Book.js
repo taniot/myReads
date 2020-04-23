@@ -9,16 +9,15 @@ class Book extends React.Component {
     book: PropTypes.object.isRequired,
     categories: PropTypes.array.isRequired,
     onChangeShelf: PropTypes.func.isRequired,
-    library: PropTypes.array.isRequired
+    library: PropTypes.array.isRequired,
   };
-
 
   render() {
     const { book, categories, onChangeShelf } = this.props;
     return (
       <div className='book'>
         <div className='book-top'>
-        <MyShelf {...this.props} />
+          <MyShelf {...this.props} />
 
           <div
             className='book-cover'

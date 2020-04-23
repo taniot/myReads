@@ -19,7 +19,7 @@ class HomePageComponent extends React.Component {
   };
 
   render() {
-    const { categories, onChangeShelf, books} = this.props;
+    const { categories, onChangeShelf, books } = this.props;
     return (
       <div className='list-books'>
         <div className='list-books-title'>

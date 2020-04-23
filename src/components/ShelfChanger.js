@@ -5,7 +5,7 @@ class ShelfChanger extends React.Component {
   static propTypes = {
     book: PropTypes.object.isRequired,
     categories: PropTypes.array.isRequired,
-    onChangeShelf: PropTypes.func.isRequired
+    onChangeShelf: PropTypes.func.isRequired,
   };
 
   handleChange = (event) =>

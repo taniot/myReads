@@ -35,7 +35,6 @@ BooksList.propTypes = {
   categories: PropTypes.array.isRequired,
   onChangeShelf: PropTypes.func.isRequired,
   library: PropTypes.array.isRequired,
-
 };
 
 export default BooksList;
