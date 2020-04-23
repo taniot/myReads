@@ -2,6 +2,7 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 
 import HomePage from './pages/Homepage';
+import Search from './pages/Search';
 import * as BooksAPI from './utils/BooksAPI';
 
 import './App.css';
@@ -40,6 +41,11 @@ class BooksApp extends React.Component {
           path='/'
           render={() => <HomePage myBooks={myBooks} categories={categories} />}
         />
+        <Route
+        exact
+        path='/search'
+        render={() => <Search />}
+      />
       </div>
     );
   }
