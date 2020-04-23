@@ -7,7 +7,7 @@ const BooksList = ({ books }) => {
       <ol className='books-grid'>
         {books.map((book) => (
           <li key={book.id}>
-            <Book />
+            <Book book={book} />
           </li>
         ))}
       </ol>
