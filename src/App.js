@@ -2,6 +2,7 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 
 import HomePage from './pages/Homepage';
+import * as BooksAPI from './utils/BooksAPI';
 
 import './App.css';
 
@@ -15,6 +16,18 @@ const categories = [
 class BooksApp extends React.Component {
   state = {
     myBooks: [],
+  };
+
+  componentDidMount() {
+    this.getMyBooks();
+  }
+
+  getMyBooks = () => {
+    BooksAPI.getAll().then((books) => {
+      this.setState(() => ({
+        myBooks: books,
+      }));
+    });
   };
 
   render() {

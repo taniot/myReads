@@ -1,5 +1,19 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import Shelf from '../components/Shelf';
 class HomePageComponent extends React.Component {
+  static propTypes = {
+    myBooks: PropTypes.array.isRequired,
+    categories: PropTypes.array.isRequired,
+  };
+
+  shelfBooks = (shelf) => {
+    const { myBooks } = this.props;
+    if (myBooks) {
+      return myBooks.filter((book) => book.shelf === shelf);
+    }
+  };
+
   render() {
     const { categories } = this.props;
     return (
@@ -14,7 +28,14 @@ class HomePageComponent extends React.Component {
             {categories
               .filter((category) => category.showHomePage === true)
               .map((category) => {
-                return <div>Shelf</div>;
+                return (
+                  <Shelf
+                    key={category.value}
+                    shelf={category}
+                    categories={categories}
+                    books={this.shelfBooks(category.value)}
+                  />
+                );
               })}
           </div>
         </div>
