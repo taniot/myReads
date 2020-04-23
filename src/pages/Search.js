@@ -1,10 +1,17 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { DebounceInput } from 'react-debounce-input';
 
 import * as BooksAPI from '../utils/BooksAPI';
 import BooksList from '../components/BooksList';
 class SearchComponent extends React.Component {
+  static propTypes = {
+    books: PropTypes.array.isRequired,
+    categories: PropTypes.array.isRequired,
+    onChangeShelf: PropTypes.func.isRequired,
+  };
+
   state = {
     query: '',
     books: [],
@@ -19,8 +26,14 @@ class SearchComponent extends React.Component {
       BooksAPI.search(queryString).then((response) => {
         if (response && response.length > 0 && queryString !== '') {
           const books = response.map((book) => {
+            const libBook = this.props.books.find(
+              (libBook) => libBook.id === book.id
+            );
+            const shelf = libBook ? libBook.shelf : 'none';
+
             return {
               ...book,
+              shelf: shelf,
               author: book.authors ? book.authors : null,
               imageLinks: {
                 smallThumbnail: book.imageLinks
@@ -44,6 +57,7 @@ class SearchComponent extends React.Component {
 
   render() {
     const { books } = this.state;
+    const { categories, onChangeShelf } = this.props;
     return (
       <div className='search-books'>
         <div className='search-books-bar'>
@@ -60,7 +74,13 @@ class SearchComponent extends React.Component {
           </div>
         </div>
         <div className='search-books-results'>
-          {books.length > 0 && <BooksList books={books} />}
+          {books.length > 0 && (
+            <BooksList
+              books={books}
+              categories={categories}
+              onChangeShelf={onChangeShelf}
+            />
+          )}
         </div>
       </div>
     );

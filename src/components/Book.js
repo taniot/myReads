@@ -1,13 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import ShelfChanger from '../components/ShelfChanger';
+
 class Book extends React.Component {
   static propTypes = {
     book: PropTypes.object.isRequired,
+    categories: PropTypes.array.isRequired,
+    onChangeShelf: PropTypes.func.isRequired,
   };
 
+
   render() {
-    const { book } = this.props;
+    const { book, categories, onChangeShelf } = this.props;
     return (
       <div className='book'>
         <div className='book-top'>
@@ -18,7 +23,13 @@ class Book extends React.Component {
               height: 193,
               backgroundImage: `url("${book.imageLinks.smallThumbnail}")`,
             }}
-          ></div>
+          >
+            <ShelfChanger
+              book={book}
+              categories={categories}
+              onChangeShelf={onChangeShelf}
+            />
+          </div>
         </div>
         <div className='book-title'>{book.title}</div>
         <div className='book-authors'>

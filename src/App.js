@@ -31,6 +31,26 @@ class BooksApp extends React.Component {
     });
   };
 
+  changeShelf = (book, shelf) => {
+    const { books } = this.state;
+    const findIndex = books.findIndex((myBook) => myBook.id === book.id);
+
+    if (findIndex !== -1) {
+      books[findIndex].shelf = shelf;
+      const newBook = books[findIndex];
+      books.splice(findIndex, 1);
+
+      this.setState({ books: books.concat([newBook]) });
+    } else {
+      if (shelf !== 'none') {
+        book.shelf = shelf;
+        this.setState({ books: books.concat([book]) });
+      }
+    }
+
+    BooksAPI.update(book, shelf);
+  };
+
   render() {
     const { books } = this.state;
 
@@ -39,9 +59,13 @@ class BooksApp extends React.Component {
         <Route
           exact
           path='/'
-          render={() => <HomePage books={books} categories={categories} />}
+          render={() => <HomePage books={books} categories={categories} onChangeShelf={this.changeShelf} />}
         />
-        <Route exact path='/search' render={() => <Search books={books} />} />
+        <Route
+          exact
+          path='/search'
+          render={() => <Search books={books} categories={categories} onChangeShelf={this.changeShelf} />}
+        />
       </div>
     );
   }

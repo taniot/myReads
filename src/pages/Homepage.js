@@ -8,6 +8,7 @@ class HomePageComponent extends React.Component {
   static propTypes = {
     books: PropTypes.array.isRequired,
     categories: PropTypes.array.isRequired,
+    onChangeShelf: PropTypes.func.isRequired,
   };
 
   shelfBooks = (shelf) => {
@@ -18,7 +19,7 @@ class HomePageComponent extends React.Component {
   };
 
   render() {
-    const { categories } = this.props;
+    const { categories, onChangeShelf } = this.props;
     return (
       <div className='list-books'>
         <div className='list-books-title'>
@@ -37,6 +38,7 @@ class HomePageComponent extends React.Component {
                     shelf={category}
                     categories={categories}
                     books={this.shelfBooks(category.value)}
+                    onChangeShelf={onChangeShelf}
                   />
                 );
               })}
