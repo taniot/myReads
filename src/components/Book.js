@@ -2,12 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import ShelfChanger from '../components/ShelfChanger';
+import MyShelf from '../components/MyShelf';
 
 class Book extends React.Component {
   static propTypes = {
     book: PropTypes.object.isRequired,
     categories: PropTypes.array.isRequired,
     onChangeShelf: PropTypes.func.isRequired,
+    library: PropTypes.array.isRequired
   };
 
 
@@ -16,6 +18,8 @@ class Book extends React.Component {
     return (
       <div className='book'>
         <div className='book-top'>
+        <MyShelf {...this.props} />
+
           <div
             className='book-cover'
             style={{

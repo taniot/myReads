@@ -231,3 +231,31 @@ button:active {
   text-align: center;
   font-size: 0.8em;
 }
+
+.myshelf {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 3px 10px;
+  background: #bbb;
+  font-size: 0.6em;
+  font-weight: bolder;
+  color: #f6f6f6;
+  border-radius: 5px
+}
+
+.myshelf.currentlyreading {
+  background: #55bf8e;
+}
+
+.myshelf.wanttoread {
+  background: #909916;
+}
+
+.myshelf.read {
+  background: #e97f55;
+}
+
+.bookshelf .myshelf {
+  display:none;
+}

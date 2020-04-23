@@ -59,12 +59,24 @@ class BooksApp extends React.Component {
         <Route
           exact
           path='/'
-          render={() => <HomePage books={books} categories={categories} onChangeShelf={this.changeShelf} />}
+          render={() => (
+            <HomePage
+              books={books}
+              categories={categories}
+              onChangeShelf={this.changeShelf}
+            />
+          )}
         />
         <Route
           exact
           path='/search'
-          render={() => <Search books={books} categories={categories} onChangeShelf={this.changeShelf} />}
+          render={() => (
+            <Search
+              books={books}
+              categories={categories}
+              onChangeShelf={this.changeShelf}
+            />
+          )}
         />
       </div>
     );

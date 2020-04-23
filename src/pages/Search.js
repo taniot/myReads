@@ -9,7 +9,7 @@ class SearchComponent extends React.Component {
   static propTypes = {
     books: PropTypes.array.isRequired,
     categories: PropTypes.array.isRequired,
-    onChangeShelf: PropTypes.func.isRequired,
+    onChangeShelf: PropTypes.func.isRequired
   };
 
   state = {
@@ -19,7 +19,6 @@ class SearchComponent extends React.Component {
 
   handleSearch = (query) => {
     this.setState({ query });
-
     const queryString = query.trim();
 
     if (queryString) {
@@ -58,6 +57,7 @@ class SearchComponent extends React.Component {
   render() {
     const { books } = this.state;
     const { categories, onChangeShelf } = this.props;
+    const library = this.props.books;
     return (
       <div className='search-books'>
         <div className='search-books-bar'>
@@ -77,6 +77,7 @@ class SearchComponent extends React.Component {
           {books.length > 0 && (
             <BooksList
               books={books}
+              library={library}
               categories={categories}
               onChangeShelf={onChangeShelf}
             />

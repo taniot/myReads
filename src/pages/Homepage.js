@@ -19,7 +19,7 @@ class HomePageComponent extends React.Component {
   };
 
   render() {
-    const { categories, onChangeShelf } = this.props;
+    const { categories, onChangeShelf, books} = this.props;
     return (
       <div className='list-books'>
         <div className='list-books-title'>
@@ -38,6 +38,7 @@ class HomePageComponent extends React.Component {
                     shelf={category}
                     categories={categories}
                     books={this.shelfBooks(category.value)}
+                    library={books}
                     onChangeShelf={onChangeShelf}
                   />
                 );
