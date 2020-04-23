@@ -16,7 +16,7 @@ const categories = [
 
 class BooksApp extends React.Component {
   state = {
-    myBooks: [],
+    books: [],
   };
 
   componentDidMount() {
@@ -26,20 +26,20 @@ class BooksApp extends React.Component {
   getMyBooks = () => {
     BooksAPI.getAll().then((books) => {
       this.setState(() => ({
-        myBooks: books,
+        books,
       }));
     });
   };
 
   render() {
-    const { myBooks } = this.state;
+    const { books } = this.state;
 
     return (
       <div className='app'>
         <Route
           exact
           path='/'
-          render={() => <HomePage myBooks={myBooks} categories={categories} />}
+          render={() => <HomePage books={books} categories={categories} />}
         />
         <Route
         exact

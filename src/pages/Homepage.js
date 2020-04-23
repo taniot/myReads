@@ -6,14 +6,14 @@ import { Link } from 'react-router-dom';
 
 class HomePageComponent extends React.Component {
   static propTypes = {
-    myBooks: PropTypes.array.isRequired,
+    books: PropTypes.array.isRequired,
     categories: PropTypes.array.isRequired,
   };
 
   shelfBooks = (shelf) => {
-    const { myBooks } = this.props;
-    if (myBooks) {
-      return myBooks.filter((book) => book.shelf === shelf);
+    const { books } = this.props;
+    if (books) {
+      return books.filter((book) => book.shelf === shelf);
     }
   };
 
